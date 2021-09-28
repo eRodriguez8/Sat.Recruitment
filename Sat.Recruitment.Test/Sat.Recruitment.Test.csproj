@@ -23,4 +23,9 @@
     <ProjectReference Include="..\Sat.Recruitment.Api\Sat.Recruitment.Api.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Business\" />
+    <Folder Include="Repository\" />
+  </ItemGroup>
+
 </Project>

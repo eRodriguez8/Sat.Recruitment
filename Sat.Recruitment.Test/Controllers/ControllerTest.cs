@@ -1,16 +1,11 @@
-using System;
-using System.Dynamic;
-
-using Microsoft.AspNetCore.Mvc;
-
+using Xunit;
 using Sat.Recruitment.Api.Controllers;
 
-using Xunit;
+namespace Sat.Recruitment.Test.Controllers
 
-namespace Sat.Recruitment.Test
 {
     [CollectionDefinition("Tests", DisableParallelization = true)]
-    public class UnitTest1
+    public class ControllerTest
     {
         [Fact]
         public void Test1()

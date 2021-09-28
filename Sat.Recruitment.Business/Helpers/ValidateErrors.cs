@@ -2,7 +2,7 @@
 
 namespace Sat.Recruitment.Business
 {
-    public class ValidateErrors
+    public static class ValidateErrors
     {
         public static ErrorModel ValidateUserProps(string name, string email, string address, string phone)
         {

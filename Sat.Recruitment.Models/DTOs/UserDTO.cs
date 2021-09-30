@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Sat.Recruitment.Models.DTOs
+namespace Sat.Recruitment.Models.Dtos
 {
-    public class UserDTO
+    public class UserDto
     {
         [Required]
         public string Name { get; set; }

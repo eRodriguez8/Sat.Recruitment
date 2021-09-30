@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Sat.Recruitment.Factory\Sat.Recruitment.Factory.csproj" />
     <ProjectReference Include="..\Sat.Recruitment.Models\Sat.Recruitment.Models.csproj" />
+    <ProjectReference Include="..\Sat.Recruitment.Repository\Sat.Recruitment.Repository.csproj" />
   </ItemGroup>
 
 </Project>

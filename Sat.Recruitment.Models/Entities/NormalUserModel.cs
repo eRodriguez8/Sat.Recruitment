@@ -1,14 +1,14 @@
 ﻿using System;
 
-using Sat.Recruitment.Models.DTOs;
+using Sat.Recruitment.Models.Dtos;
 using Sat.Recruitment.Models.Enums;
 using Sat.Recruitment.Models.Abstract;
 
-namespace Sat.Recruitment.Models
+namespace Sat.Recruitment.Models.Entities
 {
-    public class SuperUserModel : UserModel
+    public class NormalUserModel : UserModel
     {
-        public SuperUserModel(UserDTO user)
+        public NormalUserModel(UserDto user)
         {
             Name = user.Name;
             Email = user.Email;
@@ -22,7 +22,9 @@ namespace Sat.Recruitment.Models
         public override void CalculateMoney()
         {
             if (Money > 100)
-                Money += Money * Convert.ToDecimal(0.20);
+                Money += Money * Convert.ToDecimal(0.12);
+            else if (Money < 100 && Money > 10)
+                Money += Money * Convert.ToDecimal(0.8);
         }
     }
 }

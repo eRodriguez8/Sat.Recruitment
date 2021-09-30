@@ -1,6 +1,6 @@
-﻿namespace Sat.Recruitment.Models.DTOs
+﻿namespace Sat.Recruitment.Models.Dtos
 {
-    public class ResponseDTO
+    public class ResponseDto
     {
         public bool IsSuccess { get; set; }
         public string Msg { get; set; }

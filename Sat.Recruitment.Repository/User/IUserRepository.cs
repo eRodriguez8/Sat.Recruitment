@@ -2,11 +2,11 @@
 
 using Sat.Recruitment.Models.Abstract;
 
-namespace Sat.Recruitment.Repository.UserRepository
+namespace Sat.Recruitment.Repository.User
 {
     public interface IUserRepository
     {
-        public UserModel Get(string email);
+        public UserModel GetByEmail(string email);
         public IEnumerable<UserModel> GetAll();
         public void Insert(UserModel user);
         public void Seed();

@@ -1,8 +1,8 @@
 ﻿using System.IO;
 
-namespace Sat.Recruitment.Business.Helpers
+namespace Sat.Recruitment.Models.Helpers
 {
-    public static class File
+    public static class FileReader
     {
         public static StreamReader ReadUsersFromFile()
         {

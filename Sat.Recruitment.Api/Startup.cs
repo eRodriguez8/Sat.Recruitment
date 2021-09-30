@@ -1,15 +1,14 @@
+using AutoMapper;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Sat.Recruitment.Business.User;
+using Sat.Recruitment.Repository.User;
+using Sat.Recruitment.Models.MapperProfile;
 
 namespace Sat.Recruitment.Api
 {
@@ -27,6 +26,21 @@ namespace Sat.Recruitment.Api
         {
             services.AddControllers();
             services.AddSwaggerGen();
+            
+            var mapperConfig = new MapperConfiguration(m =>
+            {
+                m.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+
+            
+            services.AddSingleton(mapper);
+            services.AddSingleton<IUserRepository, UserRepository>();
+            
+            services.AddScoped<IUserBusiness, UserBusiness>();
+
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +58,7 @@ namespace Sat.Recruitment.Api
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
+
             app.UseRouting();
 
             app.UseAuthorization();

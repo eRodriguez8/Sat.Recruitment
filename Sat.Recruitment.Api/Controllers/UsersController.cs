@@ -1,19 +1,19 @@
 ﻿using AutoMapper;
-using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
+using FluentValidation.Results;
 
 using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
 using Sat.Recruitment.Models.Dtos;
-using Sat.Recruitment.Models.Helpers;
 using Sat.Recruitment.Business.User;
+using Sat.Recruitment.Models.Helpers;
 
 namespace Sat.Recruitment.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public partial class UsersController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -28,7 +28,7 @@ namespace Sat.Recruitment.Api.Controllers
         }
 
         [HttpGet("")]
-        public ActionResult<UserDto> GetAll()
+        public ActionResult<List<UserDto>> GetAll()
         {
             try
             {
@@ -47,6 +47,7 @@ namespace Sat.Recruitment.Api.Controllers
         {
             try
             {
+                EmailValidator.ValidateEmail(email);
                 return Ok(_mapper.Map<UserDto>(_business.GetByEmail(email)));
             }
             catch (Exception ex)
@@ -89,9 +90,11 @@ namespace Sat.Recruitment.Api.Controllers
             }
             catch(Exception ex)
             {
-                var result = new ObjectResult(ex.Message);
-                result.StatusCode = 412;
-                return result;
+                return new ResponseDto()
+                {
+                    IsSuccess = false,
+                    Msg = ex.Message
+                };
             }
         }
     }

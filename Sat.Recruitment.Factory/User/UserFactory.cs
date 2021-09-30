@@ -12,6 +12,8 @@ namespace Sat.Recruitment.Factory.User
     public class UserFactory : IUserFactory
     {
         private readonly IMapper _mapper;
+
+        public UserFactory() { }
         public UserFactory(IMapper mapper)
         {
             _mapper = mapper;

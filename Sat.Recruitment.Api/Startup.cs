@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Sat.Recruitment.Business.User;
 using Sat.Recruitment.Repository.User;
 using Sat.Recruitment.Models.MapperProfile;
+using Sat.Recruitment.Factory.User;
 
 namespace Sat.Recruitment.Api
 {
@@ -34,8 +35,8 @@ namespace Sat.Recruitment.Api
 
             IMapper mapper = mapperConfig.CreateMapper();
 
-            
             services.AddSingleton(mapper);
+            services.AddSingleton<IUserFactory, UserFactory>();
             services.AddSingleton<IUserRepository, UserRepository>();
             
             services.AddScoped<IUserBusiness, UserBusiness>();
@@ -62,6 +63,8 @@ namespace Sat.Recruitment.Api
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.ApplicationServices.GetService<IUserRepository>().Seed();
 
             app.UseEndpoints(endpoints =>
             {

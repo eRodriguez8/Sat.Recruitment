@@ -1,6 +1,10 @@
 ﻿using AutoMapper;
 
+using System;
+
 using Sat.Recruitment.Models.Dtos;
+using Sat.Recruitment.Models.Enums;
+using Sat.Recruitment.Models.Entities;
 using Sat.Recruitment.Models.Abstract;
 
 namespace Sat.Recruitment.Models.MapperProfile
@@ -9,8 +13,26 @@ namespace Sat.Recruitment.Models.MapperProfile
     {
         public MappingProfile()
         {
-            CreateMap<UserDto, UserModel>();
-            CreateMap<UserModel, UserDto>();
+            CreateMap<UserDto, NormalUserModel>()
+                .ForMember(
+                    dest => dest.Type,
+                    opt => opt.MapFrom(
+                        src => (UserType)Enum.Parse(typeof(UserType), src.UserType)));
+            CreateMap<UserDto, PremiumUserModel>()
+                .ForMember(
+                    dest => dest.Type,
+                    opt => opt.MapFrom(
+                        src => (UserType)Enum.Parse(typeof(UserType), src.UserType)));
+            CreateMap<UserDto, SuperUserModel>()
+                .ForMember(
+                    dest => dest.Type,
+                    opt => opt.MapFrom(
+                        src => (UserType)Enum.Parse(typeof(UserType), src.UserType)));
+            CreateMap<UserModel, UserDto>()
+                .ForMember(
+                    dest => dest.UserType,
+                    opt => opt.MapFrom(
+                        src => src.Type.ToString()));
         }
     }
 }

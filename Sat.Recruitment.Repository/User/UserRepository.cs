@@ -22,7 +22,7 @@ namespace Sat.Recruitment.Repository.User
         }
         public UserModel GetByEmail(string email)
         {
-            throw new NotImplementedException();
+            return _users.Find(user => String.Equals(user.Email, email));
         }
 
         public IEnumerable<UserModel> GetAll()
@@ -32,7 +32,7 @@ namespace Sat.Recruitment.Repository.User
 
         public void Insert(UserModel user)
         {
-            throw new NotImplementedException();
+            _users.Add(user);
         }
 
         public void Seed()

@@ -4,12 +4,12 @@ namespace Sat.Recruitment.Models.Abstract
 {
     public abstract class UserModel
     {
-        public string Name { get; protected set; }
-        public string Email { get; protected set; }
-        public string Address { get; protected set; }
-        public string Phone { get; protected set; }
-        public UserType Type { get; protected set; }
-        public decimal Money { get; protected set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
+        public UserType Type { get; set; }
+        public decimal Money { get; set; }
 
         public abstract void CalculateMoney();
     }

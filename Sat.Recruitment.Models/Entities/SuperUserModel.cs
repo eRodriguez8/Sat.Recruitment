@@ -8,6 +8,8 @@ namespace Sat.Recruitment.Models.Entities
 {
     public class SuperUserModel : UserModel
     {
+        public SuperUserModel() { }
+
         public SuperUserModel(UserDto user)
         {
             Name = user.Name;

@@ -8,6 +8,8 @@ namespace Sat.Recruitment.Models.Entities
 {
     public class NormalUserModel : UserModel
     {
+        public NormalUserModel() { }
+
         public NormalUserModel(UserDto user)
         {
             Name = user.Name;

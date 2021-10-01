@@ -17,8 +17,8 @@ namespace Sat.Recruitment.Test.Models.Mothers
                 Email = RandomString.Generate(rnd.Next(15)) + "@mail.com",
                 Address = RandomString.Generate(rnd.Next(20)),
                 Phone = RandomString.Generate(rnd.Next(15)),
-                Money = rnd.Next(10),
-                Type = UserTypeMother.Random()
+                Money = rnd.Next(0, 101),
+                Type = UserType.Normal
             };
         }
 
@@ -30,8 +30,22 @@ namespace Sat.Recruitment.Test.Models.Mothers
                 Email = user.Email,
                 Phone = user.Phone,
                 Address = user.Address,
-                Type = (UserType)Enum.Parse(typeof(UserType), user.UserType),
+                Type = UserType.Normal,
                 Money = user.Money,
+            };
+        }
+
+        public static NormalUserModel WithMoney(int money)
+        {
+            Random rnd = new Random();
+            return new NormalUserModel()
+            {
+                Name = RandomString.Generate(rnd.Next(10)),
+                Email = RandomString.Generate(rnd.Next(15)) + "@mail.com",
+                Address = RandomString.Generate(rnd.Next(20)),
+                Phone = RandomString.Generate(rnd.Next(15)),
+                Money = money,
+                Type = UserType.Normal
             };
         }
     }

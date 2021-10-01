@@ -1,11 +1,12 @@
 ﻿using Xunit;
+using System;
 using AutoMapper;
 using FluentAssertions;
 
 using Sat.Recruitment.Factory.User;
+using Sat.Recruitment.Models.Entities;
 using Sat.Recruitment.Test.Models.Mothers;
 using Sat.Recruitment.Models.MapperProfile;
-using Sat.Recruitment.Models.Entities;
 
 namespace Sat.Recruitment.Test.Factory.User
 {
@@ -119,6 +120,5 @@ namespace Sat.Recruitment.Test.Factory.User
                 .Should()
                 .Be(typeof(SuperUserModel));
         }
-
     }
 }

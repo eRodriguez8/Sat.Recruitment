@@ -14,7 +14,7 @@ namespace Sat.Recruitment.Test.Models.Mothers
                 Name = RandomString.Generate(rnd.Next(10)),
                 Email = RandomString.Generate(rnd.Next(15)) + "@mail.com",
                 Address = RandomString.Generate(rnd.Next(20)),
-                Phone = RandomString.Generate(rnd.Next(15)),
+                Phone = rnd.Next(15).ToString(),
                 Money = rnd.Next(10),
                 UserType = UserTypeMother.Random().ToString()
             };
@@ -28,7 +28,7 @@ namespace Sat.Recruitment.Test.Models.Mothers
                 Name = RandomString.Generate(rnd.Next(10)),
                 Email = RandomString.Generate(rnd.Next(15)) + "@mail.com",
                 Address = RandomString.Generate(rnd.Next(20)),
-                Phone = RandomString.Generate(rnd.Next(15)),
+                Phone = rnd.Next(15).ToString(),
                 Money = rnd.Next(10),
                 UserType = type
             };

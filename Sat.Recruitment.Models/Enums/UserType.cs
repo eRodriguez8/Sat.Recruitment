@@ -3,7 +3,7 @@
     public enum UserType
     {
         Normal,
-        SuperUser,
-        Premium
+        Premium,
+        SuperUser
     }
 }

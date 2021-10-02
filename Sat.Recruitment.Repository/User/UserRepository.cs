@@ -14,6 +14,8 @@ namespace Sat.Recruitment.Repository.User
         private List<UserModel> _users;
         private readonly IUserFactory _factory;
 
+        public UserRepository() { }
+
         public UserRepository(IUserFactory factory)
         {
             _factory = factory;

@@ -94,7 +94,11 @@ namespace Sat.Recruitment.Test.Business
         [Fact]
         public void GivenANormalUser_WhenBusinessInsertIsCall_ShouldPass()
         {
-            business.Insert(userDto);
+            Action insert = () => business.Insert(userDto);
+
+            insert
+                .Should()
+                .NotThrow();
         }
     }
 }

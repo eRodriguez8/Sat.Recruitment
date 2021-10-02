@@ -9,18 +9,6 @@ namespace Sat.Recruitment.Test.Models.Helpers
     public class EmailValidatorTest
     {
         [Theory]
-        [InlineData("email.com")]
-        public void GivenAIncorrectEmail_WhenEmailValidatorIsCall_ShouldThrownEmailException(string email)
-        {
-            Action callingWithAIncorrectValue =
-                () => EmailValidator.ValidateEmail(email);
-
-            callingWithAIncorrectValue
-                .Should()
-                .Throw<FormatException>("The specified string is not in the form required for an e-mail address.");
-        }
-
-        [Theory]
         [InlineData("email@mail.com")]
         public void GivenACorrectEmail_WhenEmailValidatorIsCall_ShouldPass(string email)
         {
@@ -30,6 +18,18 @@ namespace Sat.Recruitment.Test.Models.Helpers
             callingWithAIncorrectValue
                 .Should()
                 .NotThrow();
+        }
+
+        [Theory]
+        [InlineData("email.com")]
+        public void GivenAIncorrectEmail_WhenEmailValidatorIsCall_ShouldThrownEmailException(string email)
+        {
+            Action callingWithAIncorrectValue =
+                () => EmailValidator.ValidateEmail(email);
+
+            callingWithAIncorrectValue
+                .Should()
+                .Throw<FormatException>("The specified string is not in the form required for an e-mail address.");
         }
     }
 }

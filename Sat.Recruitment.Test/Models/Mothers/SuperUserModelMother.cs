@@ -18,7 +18,7 @@ namespace Sat.Recruitment.Test.Models.Mothers
                 Address = RandomString.Generate(rnd.Next(20)),
                 Phone = RandomString.Generate(rnd.Next(15)),
                 Money = rnd.Next(100, 200),
-                Type = UserType.SuperUser
+                Type = UserType.SUPERUSER
             };
         }
 
@@ -30,7 +30,7 @@ namespace Sat.Recruitment.Test.Models.Mothers
                 Email = user.Email,
                 Phone = user.Phone,
                 Address = user.Address,
-                Type = (UserType)Enum.Parse(typeof(UserType), user.UserType),
+                Type = UserType.SUPERUSER,
                 Money = user.Money,
             };
         }
@@ -45,7 +45,7 @@ namespace Sat.Recruitment.Test.Models.Mothers
                 Address = RandomString.Generate(rnd.Next(20)),
                 Phone = RandomString.Generate(rnd.Next(15)),
                 Money = money,
-                Type = UserType.SuperUser
+                Type = UserType.SUPERUSER
             };
         }
     }

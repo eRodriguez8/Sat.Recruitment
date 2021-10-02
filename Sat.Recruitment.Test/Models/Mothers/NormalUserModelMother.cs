@@ -18,7 +18,7 @@ namespace Sat.Recruitment.Test.Models.Mothers
                 Address = RandomString.Generate(rnd.Next(20)),
                 Phone = RandomString.Generate(rnd.Next(15)),
                 Money = rnd.Next(0, 101),
-                Type = UserType.Normal
+                Type = UserType.NORMAL
             };
         }
 
@@ -30,7 +30,7 @@ namespace Sat.Recruitment.Test.Models.Mothers
                 Email = user.Email,
                 Phone = user.Phone,
                 Address = user.Address,
-                Type = UserType.Normal,
+                Type = UserType.NORMAL,
                 Money = user.Money,
             };
         }
@@ -45,7 +45,7 @@ namespace Sat.Recruitment.Test.Models.Mothers
                 Address = RandomString.Generate(rnd.Next(20)),
                 Phone = RandomString.Generate(rnd.Next(15)),
                 Money = money,
-                Type = UserType.Normal
+                Type = UserType.NORMAL
             };
         }
     }

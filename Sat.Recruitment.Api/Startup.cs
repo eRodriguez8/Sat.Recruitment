@@ -6,10 +6,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using Sat.Recruitment.Factory.User;
 using Sat.Recruitment.Business.User;
 using Sat.Recruitment.Repository.User;
 using Sat.Recruitment.Models.MapperProfile;
-using Sat.Recruitment.Factory.User;
 
 namespace Sat.Recruitment.Api
 {

@@ -2,8 +2,8 @@
 {
     public enum UserType
     {
-        Normal,
-        Premium,
-        SuperUser
+        NORMAL,
+        PREMIUM,
+        SUPERUSER
     }
 }

@@ -1,11 +1,10 @@
 ﻿using FluentValidation;
 using Sat.Recruitment.Models.Dtos;
 
-namespace Sat.Recruitment.Models.Helpers
+namespace Sat.Recruitment.Models.Helpers.UserValidation
 {
     public class UserValidator : AbstractValidator<UserDto>
     {
-        private const string emailPattern = @"/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i";
         public UserValidator()
         {
             RuleFor(x => x.Name)
@@ -14,7 +13,7 @@ namespace Sat.Recruitment.Models.Helpers
             RuleFor(x => x.Email)
                 .NotEmpty()
                 .WithMessage("The email is required")
-                .Matches(emailPattern)
+                .EmailAddress()
                 .WithMessage("The email is not valid");
             RuleFor(x => x.Address)
                 .NotEmpty()

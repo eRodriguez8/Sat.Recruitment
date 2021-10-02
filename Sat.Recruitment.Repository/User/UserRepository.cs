@@ -5,6 +5,7 @@ using Sat.Recruitment.Models.Dtos;
 using Sat.Recruitment.Models.Helpers;
 using Sat.Recruitment.Models.Abstract;
 using Sat.Recruitment.Factory.User;
+using System.Threading.Tasks;
 
 namespace Sat.Recruitment.Repository.User
 {
@@ -17,8 +18,6 @@ namespace Sat.Recruitment.Repository.User
         {
             _factory = factory;
             _users = new List<UserModel>();
-
-            Seed();
         }
         public UserModel GetByEmail(string email)
         {
@@ -48,7 +47,7 @@ namespace Sat.Recruitment.Repository.User
                     Email = line.Split(',')[1].ToString(),
                     Phone = line.Split(',')[2].ToString(),
                     Address = line.Split(',')[3].ToString(),
-                    UserType = line.Split(',')[4].ToString(),
+                    UserType = line.Split(',')[4].ToString().ToUpper(),
                     Money = decimal.Parse(line.Split(',')[5].ToString()),
                 };
 

@@ -6,6 +6,7 @@ using Sat.Recruitment.Models.Dtos;
 using Sat.Recruitment.Factory.User;
 using Sat.Recruitment.Models.Abstract;
 using Sat.Recruitment.Repository.User;
+using Sat.Recruitment.Business.Helpers;
 using Sat.Recruitment.Models.Exceptions;
 
 namespace Sat.Recruitment.Business.User
@@ -36,24 +37,11 @@ namespace Sat.Recruitment.Business.User
 
         public void Insert(UserDto user)
         {
-            if (ExistDuplicatedUser(user))
+            var users = _repository.GetAll().ToList();
+            if (HasUser.Duplicated(users, user))
                 throw new DuplicatedUserException("User is duplicated");
 
             _repository.Insert(_factory.Create(user));
-        }
-
-        private bool ExistDuplicatedUser(UserDto user)
-        {
-            var users = _repository.GetAll().ToList();
-
-            return users.Exists(existentUser =>
-            {
-                return (
-                    (String.Equals(existentUser.Email, user.Email) || String.Equals(existentUser.Phone, user.Phone)) || 
-                        (String.Equals(existentUser.Name, user.Name) && String.Equals(existentUser.Address, user.Address))
-                );
-            });
-
         }
     }
 }

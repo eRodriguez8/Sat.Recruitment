@@ -17,17 +17,17 @@ namespace Sat.Recruitment.Models.MapperProfile
                 .ForMember(
                     dest => dest.Type,
                     opt => opt.MapFrom(
-                        src => (UserType)Enum.Parse(typeof(UserType), src.UserType)));
+                        src => (UserType)Enum.Parse(typeof(UserType), src.UserType.ToUpper())));
             CreateMap<UserDto, PremiumUserModel>()
                 .ForMember(
                     dest => dest.Type,
                     opt => opt.MapFrom(
-                        src => (UserType)Enum.Parse(typeof(UserType), src.UserType)));
+                        src => (UserType)Enum.Parse(typeof(UserType), src.UserType.ToUpper())));
             CreateMap<UserDto, SuperUserModel>()
                 .ForMember(
                     dest => dest.Type,
                     opt => opt.MapFrom(
-                        src => (UserType)Enum.Parse(typeof(UserType), src.UserType)));
+                        src => (UserType)Enum.Parse(typeof(UserType), src.UserType.ToUpper())));
             CreateMap<UserModel, UserDto>()
                 .ForMember(
                     dest => dest.UserType,

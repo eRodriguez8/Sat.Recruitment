@@ -1,14 +1,13 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using FluentValidation.Results;
 
 using System;
-using System.Threading.Tasks;
 using System.Collections.Generic;
 
 using Sat.Recruitment.Models.Dtos;
 using Sat.Recruitment.Business.User;
 using Sat.Recruitment.Models.Helpers;
+using Sat.Recruitment.Models.Helpers.UserValidation;
 
 namespace Sat.Recruitment.Api.Controllers
 {
@@ -18,13 +17,11 @@ namespace Sat.Recruitment.Api.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IUserBusiness _business;
-        private readonly UserValidator _userValidator;
 
         public UsersController(IMapper mapper, IUserBusiness business)
         {
             _mapper = mapper;
             _business = business;
-            _userValidator = new UserValidator();
         }
 
         [HttpGet("")]
@@ -53,48 +50,25 @@ namespace Sat.Recruitment.Api.Controllers
             catch (Exception ex)
             {
                 var result = new ObjectResult(ex.Message);
-                result.StatusCode = 500;
+                result.StatusCode = 404;
                 return result;
             }
         }
 
         [HttpPost]
-        public async Task<ActionResult<ResponseDto>> CreateUser([FromBody] UserDto user)
+        public ActionResult CreateUser([FromBody] UserDto user)
         {
             try
             {
-                ValidationResult result = _userValidator.Validate(user);
-
-                if(!result.IsValid)
-                {
-                    string errorMsg = "";
-                    
-                    foreach(var error in result.Errors)
-                    {
-                        errorMsg = string.Join(",", $"Error in {error.PropertyName} {error.ErrorMessage}");
-                    }
-                    
-                    return new ResponseDto()
-                    {
-                        IsSuccess = false,
-                        Msg = errorMsg
-                    };
-                }
-
+                UserValidatorWrapper.Validate(user);
                 _business.Insert(user);
-                return new ResponseDto()
-                {
-                    IsSuccess = true,
-                    Msg = ""
-                };
+                return Ok();
             }
             catch(Exception ex)
             {
-                return new ResponseDto()
-                {
-                    IsSuccess = false,
-                    Msg = ex.Message
-                };
+                var result = new ObjectResult(ex.Message);
+                result.StatusCode = 500;
+                return result;
             }
         }
     }

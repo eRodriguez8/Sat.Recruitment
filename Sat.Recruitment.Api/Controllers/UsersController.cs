@@ -25,7 +25,7 @@ namespace Sat.Recruitment.Api.Controllers
         }
 
         [HttpGet("")]
-        public ActionResult<List<UserDto>> GetAll()
+        public IActionResult GetAll()
         {
             try
             {
@@ -40,7 +40,7 @@ namespace Sat.Recruitment.Api.Controllers
         }
 
         [HttpGet("/{email}")]
-        public ActionResult<UserDto> GetByEmail(string email)
+        public IActionResult GetByEmail(string email)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace Sat.Recruitment.Api.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateUser([FromBody] UserDto user)
+        public IActionResult CreateUser([FromBody] UserDto user)
         {
             try
             {
